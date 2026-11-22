@@ -19,6 +19,9 @@ import retrofit2.http.Query
 interface ApiUsuarios {
     @POST("usuarios/login")
     suspend fun iniciarSesion(@Body datos: Map<String, String>): Usuario
+
+    @POST("usuarios/restablecer")
+    suspend fun restablecer(@Body datos: Map<String, String>): retrofit2.Response<Unit>
 }
 
 interface ApiClientes {
@@ -84,6 +87,9 @@ interface ApiProtocolos {
 
     @POST("protocolos")
     suspend fun crear(@Body datos: @JvmSuppressWildcards Map<String, Any?>): ProtocoloDto
+
+    @POST("usuarios/restablecer")
+    suspend fun restablecer(@Body datos: Map<String, String>): retrofit2.Response<Unit>
 
     @PATCH("protocolos/{id}/estado")
     suspend fun cambiarEstado(@Path("id") id: Long, @Body datos: @JvmSuppressWildcards Map<String, Any?>): ResponseBody

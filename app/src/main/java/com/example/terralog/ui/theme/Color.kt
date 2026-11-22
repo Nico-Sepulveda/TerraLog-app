@@ -12,7 +12,7 @@ val Pink40 = Color(0xFF7D5260)
 
 
 
-val Primario = Color(0xFFFFEB3B)
+val Primario = Color(0xDAFFD559)
 val PrimarioOscuro = Color(0xFF6B1224)
 val PrimarioClaro = Color(0xFFFAD1D7)
 val Secundario = Color(0xFF8A4B38)

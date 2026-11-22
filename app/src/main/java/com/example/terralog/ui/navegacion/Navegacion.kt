@@ -17,10 +17,12 @@ import com.example.terralog.ui.pantallas.ListaEquiposPantalla
 import com.example.terralog.ui.pantallas.LoginPantalla
 import com.example.terralog.ui.pantallas.NuevoProtocoloPantalla
 import com.example.terralog.ui.pantallas.RegistrarEquipoPantalla
+import com.example.terralog.ui.pantallas.RestablecerPantalla
 
 
 object Rutas {
     const val LOGIN = "login"
+    const val RESTABLECER = "restablecer"
     const val EQUIPOS = "equipos"
     const val REGISTRAR_EQUIPO = "registrar_equipo"
     const val EQUIPO = "equipo/{equipoId}"
@@ -61,8 +63,13 @@ fun NavegacionApp() {
                     navController.navigate(Rutas.EQUIPOS) {
                         popUpTo(Rutas.LOGIN) { inclusive = true }
                     }
-                }
+                },
+                alOlvido = { navController.navigate(Rutas.RESTABLECER) }
             )
+        }
+
+        composable(Rutas.RESTABLECER) {
+            RestablecerPantalla(alVolver = { navController.popBackStack() })
         }
 
         composable(Rutas.EQUIPOS) {

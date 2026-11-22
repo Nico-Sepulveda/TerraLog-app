@@ -37,6 +37,13 @@ class Repositorio private constructor(private val bd: BaseDatos) {
             null
         }
 
+    suspend fun restablecerClave(correo: String, nuevaClave: String): Boolean =
+        try {
+            Api.usuarios.restablecer(mapOf("correo" to correo, "nuevaClave" to nuevaClave)).isSuccessful
+        } catch (e: Exception) {
+            false
+        }
+
     suspend fun obtenerUsuario(id: Long): Usuario? = usuarioDao.obtener(id)
 
     private suspend fun armar(equipos: List<Equipo>): List<EquipoConInstalacion> {
