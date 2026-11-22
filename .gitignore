@@ -1,0 +1,11 @@
+.gradle/
+.idea/
+build/
+local.properties
+*.iml
+.cxx/
+.externalNativeBuild/
+captures/
+TerraLog_entrega/
+*.jks
+*.keystore

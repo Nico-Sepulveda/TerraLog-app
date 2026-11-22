@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TerraLog</string>
+
+
+    <string name="login_titulo">Registro de protocolos</string>
+    <string name="login_subtitulo">Accede con tu cuenta de Induztek</string>
+    <string name="campo_correo">Correo electrónico</string>
+    <string name="campo_clave">Contraseña</string>
+    <string name="btn_ingresar">Entrar</string>
+    <string name="login_error_credenciales">Correo o contraseña incorrectos</string>
+    <string name="login_demo">Datos ficticios de prueba: faraneda@induztek.cl (técnico), imardones@induztek.cl (ingeniera) o pvillalobos@envpacifico.cl (cliente). Contraseña: terralog2026</string>
+
+
+    <string name="titulo_equipos">Mis equipos</string>
+    <string name="buscar_equipo">Buscar por TAG, serie o instalación</string>
+    <string name="sin_equipos">No hay equipos que mostrar</string>
+
+
+    <string name="titulo_registrar_equipo">Registrar equipo</string>
+    <string name="campo_tag">TAG del equipo</string>
+    <string name="etiqueta_tipo">Tipo de equipo</string>
+    <string name="etiqueta_instalacion">Instalación</string>
+    <string name="seccion_datos_placa">Datos de placa</string>
+    <string name="campo_marca">Marca</string>
+    <string name="campo_nro_serie">Número de serie</string>
+    <string name="campo_anio">Año de fabricación</string>
+    <string name="campo_datos_placa">Datos de placa (potencia, tensión, etc.)</string>
+    <string name="campo_max_contactos">Máximo de contactos de la placa</string>
+    <string name="seccion_foto">Foto de la placa</string>
+    <string name="btn_tomar_foto">Tomar foto de la placa</string>
+    <string name="btn_repetir_foto">Repetir foto</string>
+    <string name="foto_sin_permiso">Sin permiso de cámara. La foto es opcional: puedes guardar igual o activar el permiso en Ajustes del teléfono.</string>
+    <string name="btn_guardar_equipo">Guardar equipo en terreno</string>
+    <string name="equipo_guardado">Equipo registrado</string>
+
+
+    <string name="titulo_detalle_equipo">Detalle del equipo</string>
+    <string name="btn_nuevo_protocolo">Nuevo protocolo de prueba</string>
+    <string name="historial_protocolos">Historial de protocolos</string>
+    <string name="sin_protocolos">Este equipo aún no tiene protocolos</string>
+    <string name="sin_acceso">No tienes acceso a este equipo</string>
+
+
+    <string name="titulo_nuevo_protocolo">Nuevo protocolo</string>
+    <string name="indicacion_ambiente">Registra las condiciones ambientales de la prueba. Son obligatorias.</string>
+    <string name="campo_temperatura">Temperatura ambiente</string>
+    <string name="campo_humedad">Humedad relativa</string>
+    <string name="btn_crear_protocolo">Crear protocolo</string>
+    <string name="protocolo_creado">Protocolo iniciado</string>
+
+    
+    <string name="titulo_protocolo">Protocolo de prueba</string>
+    <string name="seccion_pruebas">Pruebas</string>
+    <string name="sin_pruebas">Aún no hay pruebas registradas</string>
+    <string name="agregar_prueba">Agregar prueba</string>
+    <string name="seccion_acciones">Acciones</string>
+    <string name="dialogo_formalizar">Formalizar protocolo</string>
+    <string name="dialogo_observar">Observar protocolo</string>
+    <string name="dialogo_anular">Anular protocolo</string>
+    <string name="dialogo_variacion">Hay una variación significativa respecto de la prueba anterior. Deja un comentario antes de formalizar.</string>
+    <string name="campo_motivo">Motivo o comentario</string>
+    <string name="btn_confirmar">Confirmar</string>
+    <string name="btn_cancelar">Cancelar</string>
+
+
+    <string name="titulo_nueva_prueba">Registrar prueba</string>
+    <string name="prueba_no_realizada">Esta prueba no se realizó</string>
+    <string name="campo_motivo_no_realizada">Motivo (ej. cliente no autorizó desconexión)</string>
+    <string name="seccion_instrumento">Instrumento utilizado</string>
+    <string name="seccion_mediciones">Mediciones</string>
+    <string name="rele_opero">El relé operó</string>
+    <string name="resultado_manual">Resultado (lo define el ingeniero)</string>
+    <string name="resultado_calculado">Resultado calculado</string>
+    <string name="campo_comentario">Comentario (opcional)</string>
+    <string name="btn_guardar_prueba">Guardar prueba</string>
+    <string name="prueba_guardada">Prueba guardada</string>
+
+
+    <string name="cd_volver">Volver</string>
+    <string name="cd_agregar_equipo">Agregar equipo</string>
+    <string name="cd_cerrar_sesion">Cerrar sesión</string>
+    <string name="cd_mostrar_clave">Mostrar contraseña</string>
+    <string name="cd_ocultar_clave">Ocultar contraseña</string>
+    <string name="cd_foto_placa">Foto de la placa del equipo</string>
+    <string name="cd_error">Error en el campo</string>
+</resources>
