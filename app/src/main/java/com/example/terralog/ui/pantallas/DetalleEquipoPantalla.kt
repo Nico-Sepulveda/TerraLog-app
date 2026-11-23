@@ -13,12 +13,21 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -55,6 +64,7 @@ fun DetalleEquipoPantalla(
     LaunchedEffect(equipoId) { vm.cargar(equipoId) }
     val datos = vm.equipo
     val esCliente = Sesion.rol() == Rol.CLIENTE
+    var confirmar by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = { BarraSuperior(stringResource(R.string.titulo_detalle_equipo), alVolver) }
@@ -87,7 +97,6 @@ fun DetalleEquipoPantalla(
                     }
                 }
 
-                
                 val rutaFoto = equipo.rutaFotoPlaca
                 if (rutaFoto != null) {
                     val imagen = remember(rutaFoto) { Camara.cargarFoto(rutaFoto) }
@@ -105,7 +114,6 @@ fun DetalleEquipoPantalla(
                     }
                 }
 
-                
                 if (Permisos.puedeRegistrar(Sesion.rol())) {
                     Spacer(modifier = Modifier.height(Dimens.espacioMedio))
                     BotonPrincipal(
@@ -115,7 +123,36 @@ fun DetalleEquipoPantalla(
                     )
                 }
 
-                
+                if (!esCliente) {
+                    Spacer(modifier = Modifier.height(Dimens.espacioChico))
+                    OutlinedButton(
+                        onClick = { confirmar = true },
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error)
+                    ) {
+                        Icon(Icons.Default.Delete, contentDescription = null)
+                        Text("Eliminar equipo")
+                    }
+                    vm.error?.let {
+                        Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
+                    }
+                }
+
+                if (confirmar) {
+                    AlertDialog(
+                        onDismissRequest = { confirmar = false },
+                        title = { Text("Eliminar equipo") },
+                        text = { Text("¿Seguro que quieres eliminar ${equipo.tag}? Esta acción no se puede deshacer.") },
+                        confirmButton = {
+                            TextButton(onClick = {
+                                confirmar = false
+                                vm.eliminar(alVolver)
+                            }) { Text("Eliminar") }
+                        },
+                        dismissButton = { TextButton(onClick = { confirmar = false }) { Text("Cancelar") } }
+                    )
+                }
+
                 EncabezadoSeccion(stringResource(R.string.historial_protocolos))
                 if (vm.protocolos.isEmpty()) {
                     MensajeVacio(stringResource(R.string.sin_protocolos))
@@ -137,7 +174,7 @@ private fun TarjetaProtocolo(protocolo: Protocolo, esCliente: Boolean, alHacerCl
         Text(protocolo.numero, style = MaterialTheme.typography.titleMedium)
         Text(Formato.fechaHora(protocolo.fechaHora), style = MaterialTheme.typography.bodySmall)
         Spacer(modifier = Modifier.height(Dimens.espacioChico))
-        
+
         Column(
             modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(Dimens.espacioChico)

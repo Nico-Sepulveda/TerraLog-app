@@ -22,6 +22,8 @@ class DetalleEquipoViewModel(app: Application) : AndroidViewModel(app) {
         private set
     var sinAcceso by mutableStateOf(false)
         private set
+    var error by mutableStateOf<String?>(null)
+        private set
 
     private var cargadoId: Long? = null
 
@@ -39,6 +41,17 @@ class DetalleEquipoViewModel(app: Application) : AndroidViewModel(app) {
             equipo = encontrado
 
             repositorio.protocolosDeEquipo(equipoId, usuario).collect { protocolos = it }
+        }
+    }
+
+    fun eliminar(alExito: () -> Unit) {
+        val id = equipo?.equipo?.id ?: return
+        if (protocolos.isNotEmpty()) {
+            error = "No se puede eliminar: el equipo tiene protocolos."
+            return
+        }
+        viewModelScope.launch {
+            if (repositorio.eliminarEquipo(id)) alExito() else error = "No se pudo eliminar el equipo."
         }
     }
 }

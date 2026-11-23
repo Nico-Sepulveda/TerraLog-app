@@ -47,6 +47,9 @@ interface ApiEquipos {
 
     @POST("equipos")
     suspend fun crear(@Body datos: @JvmSuppressWildcards Map<String, Any?>): Equipo
+
+    @retrofit2.http.DELETE("equipos/{id}")
+    suspend fun eliminar(@retrofit2.http.Path("id") id: Long): retrofit2.Response<Unit>
 }
 
 class InstrumentoDto(
@@ -106,7 +109,7 @@ interface ApiPruebas {
 }
 
 object Api {
-    const val SERVIDOR = "192.168.1.82"
+    const val SERVIDOR = "192.168.1.88"
 
     private fun crear(puerto: Int) = Retrofit.Builder()
         .baseUrl("http://$SERVIDOR:$puerto/")

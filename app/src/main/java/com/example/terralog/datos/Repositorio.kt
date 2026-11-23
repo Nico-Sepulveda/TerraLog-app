@@ -92,6 +92,9 @@ class Repositorio private constructor(private val bd: BaseDatos) {
         return creado.id
     }
 
+    suspend fun eliminarEquipo(id: Long): Boolean =
+        try { Api.equipos.eliminar(id).isSuccessful } catch (e: Exception) { false }
+
     fun instalaciones(): Flow<List<InstalacionConCliente>> = flow {
         while (true) {
             val lista = try {
